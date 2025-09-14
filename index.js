@@ -6,6 +6,8 @@ const connectDB = require('./configuration/DB');
 const vendorRoutes = require('./routes/vendorRoutes');
 const firmRoutes = require('./routes/firmRoutes');
 const productRoutes = require('./routes/productRoutes');
+const cors = require('cors');
+const bodyParser = require('body-parser');
 
 connectDB();
 
@@ -13,7 +15,9 @@ dotenv.config();
 
 const app = express();
 
-app.use(express.json());
+app.use(cors());
+
+app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
 
